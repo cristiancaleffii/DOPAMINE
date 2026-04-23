@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DOPAMINE">
         <activity
+            android:name=".RandomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TopValutazioniActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NovitaActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
