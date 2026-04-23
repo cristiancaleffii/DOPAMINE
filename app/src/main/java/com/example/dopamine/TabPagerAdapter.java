@@ -15,7 +15,6 @@ public class TabPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
-            case 0: return new Home();
             case 1: return new Search();
             case 2: return new Favourites();
             case 3: return new Game();
