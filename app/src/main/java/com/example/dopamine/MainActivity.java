@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager2.widget.ViewPager2;
 
 // AGGIUNTO per la navigazione
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,20 +29,36 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        ViewPager2 viewPager = findViewById(R.id.viewPager);
+
+        // Adapter
+        viewPager.setAdapter(new TabPagerAdapter(this));
+        viewPager.setUserInputEnabled(false);
+
+        final String[] tabTitles = {"Home", "Ricerca", "Preferiti", "Gioco", "Profilo"};
+        int[] tabIcons = {R.drawable.ic_home, R.drawable.ic_search, R.drawable.ic_star, R.drawable.ic_game, R.drawable.ic_profile};
+
+        // Connect tabs with ViewPager 2
+        new TabLayoutMediator(tabLayout, viewPager,
+                (tab, position) -> {
+                    tab.setText(tabTitles[position]);
+                    tab.setIcon(tabIcons[position]);
+                }).attach();
+
         // --- CODICE PER IL NOME DINAMICO ---
 
         // 1. Trova la barra di navigazione
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
 
         // 2. Stringa del nome (che prenderai dal Login)
-        String nomeUtenteLoggato = "NomeDinamico";
+        /*String nomeUtenteLoggato = "NomeDinamico";
 
         // 3. Cambia il titolo dell'elemento con id "nav_profile"
-        if (bottomNav != null) {
-            MenuItem profileItem = bottomNav.getMenu().findItem(R.id.nav_profile);
+        if (tabLayout != null) {
+            MenuItem profileItem = tabLayout.getMenu().findItem(R.id.nav_profile);
             if (profileItem != null) {
                 profileItem.setTitle(nomeUtenteLoggato);
             }
-        }
+        }*/
     }
 }
