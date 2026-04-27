@@ -26,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:text="Evento Scelto da Noi!"
+                    android:text="Eventi Disponibili"
                     android:textColor="@android:color/black"
                     android:textSize="25sp"
                     android:textStyle="bold"/>
@@ -55,26 +55,52 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:id="@+id/eventTitle"
-                    android:layout_width="wrap_content"
+                android:padding="16dp"
+                android:background="@color/cardview_light_background">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="OKC vs SUNS - GAME 4"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
 
-                <ImageView
+                    <TextView
+                        android:id="@+id/eventTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:text="OKC vs SUNS - GAME 4"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/buttonFavorite"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="10dp"
+                        android:background="@android:color/transparent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/star_empty"></ImageButton>
+
+                </LinearLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    tools:srcCompat="@drawable/okc_vs_suns" />
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/okc_vs_suns"
+                    app:shapeAppearanceOverlay="@style/roundedImage"/>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="32dp"
                     app:cardElevation="2dp">
@@ -83,15 +109,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="16dp"></LinearLayout>
+                        android:padding="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:text="Texti text"
-                        android:textSize="15sp"
-                        android:textStyle="bold"></TextView>
+                        <TextView
+                            android:id="@+id/descriptionText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:text="NBA Playoffs
+                             OKC vs Suns - Game 4
+                             OKC leads 3-0"
+                            android:textSize="20sp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/locationText"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_margin="8dp"
+                            android:text="📍 Mortgage Matchup Center,
+                             201 E Jefferson St, Phoenix, AZ 85004, Stati Uniti"
+                            android:textSize="15sp"
+                            android:textStyle="bold">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/hourDateText"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_margin="8dp"
+                            android:text="🕑 28 Aprile 2026, 3:30 AM CEST"
+                            android:textSize="15sp"
+                            android:textStyle="bold">
+                        </TextView>
+
+                    </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 

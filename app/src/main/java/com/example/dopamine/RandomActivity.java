@@ -27,5 +27,19 @@ public class RandomActivity extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             finish();
         });
+
+        ImageButton buttonFavorite = findViewById(R.id.buttonFavorite);
+        final boolean[] isFavorite = {false};
+
+        buttonFavorite.setOnClickListener(v -> {
+           isFavorite[0] = !isFavorite[0];
+
+           if (isFavorite[0]) {
+               buttonFavorite.setImageResource(R.drawable.star_filled);
+
+           } else {
+               buttonFavorite.setImageResource(R.drawable.star_empty);
+           }
+        });
     }
 }
