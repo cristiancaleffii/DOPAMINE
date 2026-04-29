@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DOPAMINE">
         <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventDescriptionActivity"
+            android:exported="false" />
+        <activity
             android:name=".RandomActivity"
             android:exported="false" />
         <activity

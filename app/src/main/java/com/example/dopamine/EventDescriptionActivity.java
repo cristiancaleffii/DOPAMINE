@@ -1,9 +1,6 @@
 package com.example.dopamine;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -12,34 +9,37 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class RandomActivity extends AppCompatActivity {
+public class EventDescriptionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_random);
+        setContentView(R.layout.activity_event_description);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button descriptionButton = findViewById(R.id.prenota);
+        ImageButton buttonFavorite = findViewById(R.id.buttonFavorite2);
+        final boolean[] isFavorite = {false};
 
-        descriptionButton.setOnClickListener(new View.OnClickListener() {
+        buttonFavorite.setOnClickListener(v -> {
+           isFavorite[0] = !isFavorite[0];
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RandomActivity.this, EventDescriptionActivity.class);
-                startActivity(intent);
-            }
+           if (isFavorite[0]) {
+               buttonFavorite.setImageResource(R.drawable.filled_heart);
+
+           } else {
+               buttonFavorite.setImageResource(R.drawable.empty_heart);
+           }
         });
 
         ImageButton backButton = findViewById(R.id.backButton);
 
         backButton.setOnClickListener(v -> {
-            finish();
+           finish();
         });
     }
 }
